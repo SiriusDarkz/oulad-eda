@@ -5,6 +5,7 @@ description = "Análisis Exploratorio de Datos del dataset OULAD"
 authors = [
     { name = "Jose Eugenio Duran", email = "eugenioduran15@gmail.com" }
 ]
+
 license = { text = "MIT" }
 readme = "README.md"
 requires-python = ">=3.11"
@@ -19,6 +20,9 @@ dependencies = [
     "notebook>=7.0",
     "rich>=13.7"
 ]
+
+[tool.poetry]
+package-mode = false
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
