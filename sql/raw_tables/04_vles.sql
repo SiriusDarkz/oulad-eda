@@ -1,4 +1,4 @@
-CREATE TABLE vle (
+CREATE TABLE vles (
     id_site INT PRIMARY KEY,
     code_module VARCHAR(45),
     code_presentation VARCHAR(45),

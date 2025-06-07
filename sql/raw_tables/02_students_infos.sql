@@ -1,4 +1,4 @@
-CREATE TABLE studentinfo (
+CREATE TABLE students_infos (
     id_student INT,
     code_module VARCHAR(45),
     code_presentation VARCHAR(45),

@@ -1,4 +1,4 @@
-CREATE TABLE studentassessment (
+CREATE TABLE students_assessments (
     id_student INT,
     id_assessment INT,
     date_submitted INT,
