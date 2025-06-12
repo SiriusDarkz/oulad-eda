@@ -1,4 +1,4 @@
-CREATE TABLE students_infos (
+CREATE TABLE IF NOT EXISTS student_infos_raw (
     id_student INT,
     code_module VARCHAR(45),
     code_presentation VARCHAR(45),
@@ -13,5 +13,5 @@ CREATE TABLE students_infos (
     final_result VARCHAR(45),
     PRIMARY KEY (id_student, code_module, code_presentation),
     FOREIGN KEY (code_module, code_presentation)
-        REFERENCES courses(code_module, code_presentation)
+        REFERENCES courses_raw(code_module, code_presentation)
 );

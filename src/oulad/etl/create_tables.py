@@ -13,7 +13,7 @@ DB_CONFIG = {
     "password": "oulad_pass"
 }
 
-SQL_DIR = Path("sql/raw_tables")
+SQL_DIRS = [Path("sql/raw_tables"), Path("sql/transformed_tables")]
 console = Console()
 
 def conectar_db():
@@ -41,19 +41,20 @@ def ejecutar_sql(conn, sql_path):
 
 def crear_tablas():
     conn = conectar_db()
-    sql_files = sorted(SQL_DIR.glob("*.sql"))
-
     tabla = Table(title="Resultado de creación de tablas")
     tabla.add_column("Archivo SQL", style="cyan")
     tabla.add_column("Estado", style="green")
 
-    for sql_file in sql_files:
-        try:
-            ejecutar_sql(conn, sql_file)
-            tabla.add_row(sql_file.name, " Ejecutado")
-        except Exception as e:
-            tabla.add_row(sql_file.name, f"Error: {e}")
-    
+    for sql_dir in SQL_DIRS:
+        console.print(f"\n📂 Procesando carpeta: {sql_dir}")
+        sql_files = sorted(sql_dir.glob("*.sql"))
+        for sql_file in sql_files:
+            try:
+                ejecutar_sql(conn, sql_file)
+                tabla.add_row(sql_file.name, " Ejecutado")
+            except Exception as e:
+                tabla.add_row(sql_file.name, f"Error: {e}")
+
     conn.commit()
     conn.close()
     console.print(tabla)

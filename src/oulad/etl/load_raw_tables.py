@@ -11,13 +11,13 @@ CSV_DIR = Path("data")
 
 # Map de archivos a tablas
 CSV_TO_TABLE = {
-    "courses.csv": "courses",
-    "studentInfo.csv": "students_infos",
-    "assessments.csv": "assessments",
-    "studentAssessment.csv": "students_assessments",
-    "studentRegistration.csv": "students_registrations",
-    "vle.csv": "vles",
-    "studentVle.csv": "students_vles"
+    "courses.csv": "courses_raw",
+    "studentInfo.csv": "student_infos_raw",
+    "assessments.csv": "assessments_raw",
+    "studentAssessment.csv": "student_assessments_raw",
+    "studentRegistration.csv": "student_registrations_raw",
+    "vle.csv": "vles_raw",
+    "studentVle.csv": "student_vles_raw"
 }
 
 # Preprocesamiento si es necesario
