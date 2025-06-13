@@ -30,6 +30,7 @@ def calc_vle_engagement(df, vle_df):
     df["first_click_week"] = df.groupby("id_student")["week_from"].transform("min")
     df["total_clicks"] = df.groupby("id_student")["sum_click"].transform("sum")
     df["activity_diversity"] = df.groupby("id_student")["activity_type"].transform("nunique")
+    df = df.drop(columns=["activity_type"])
     return df
 
 # 🧩 Pipelines por entidad
