@@ -1,7 +1,13 @@
 from sqlalchemy import create_engine, text
+from sqlalchemy.exc import SQLAlchemyError
+from rich.console import Console
+from rich.panel import Panel
+from rich.text import Text
 
 DATABASE_URL = "postgresql://oulad_user:oulad_pass@localhost:5432/oulad_db"
 engine = create_engine(DATABASE_URL)
+
+console = Console()
 
 def drop_all_tables(engine):
     drop_statements = [
@@ -24,13 +30,18 @@ def drop_all_tables(engine):
         "DROP VIEW IF EXISTS fd_student_vle;",
         "DROP MATERIALIZED VIEW IF EXISTS fd_student_assessments;"
     ]
+    console.rule("[bold red]🗑️ Eliminando Tablas y Vistas")
 
-    with engine.connect() as conn:
-        for stmt in drop_statements:
-            print(f"Ejecutando: {stmt.strip()}")
-            conn.execute(text(stmt))
-        conn.commit()
-    print("Todas las tablas RAW y CLEAN fueron eliminadas.")
+    try:
+        with engine.connect() as conn:
+            for stmt in drop_statements:
+                console.print(f"[cyan]Ejecutando:[/cyan] {stmt.strip()}")
+                conn.execute(text(stmt))
+            conn.commit()
+        console.print(Panel.fit("[green]Todas las tablas RAW y CLEAN fueron eliminadas correctamente.[/green]", title="Éxito", style="bold green"))
+
+    except SQLAlchemyError as e:
+        console.print(Panel.fit(f"[red]Error al eliminar las tablas:[/red]\n\n{str(e)}", title="Error", style="bold red"))
 
 if __name__ == "__main__":
     drop_all_tables(engine)

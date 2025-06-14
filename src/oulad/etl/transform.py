@@ -4,24 +4,36 @@ from oulad.etl.imputation import apply_null_imputations
 from oulad.etl.imputation import apply_format_to_imd_band_field
 from oulad.etl.encoder import apply_all_encodings
 from oulad.etl.derived_features import apply_features
+from rich.console import Console
+from rich.panel import Panel
+from rich.progress import track
 
 DATABASE_URL = "postgresql://oulad_user:oulad_pass@localhost:5432/oulad_db"
 engine = create_engine(DATABASE_URL)
 
+console = Console()
+
 def process_table(table_name: str, engine, extra_data: dict = {}):
-    print(f"Procesando: {table_name}")
-    df = pd.read_sql_table(table_name + "_raw", con=engine)
+    console.rule(f"[bold blue]📦 Procesando: [cyan]{table_name}[/cyan]")
 
-    df = apply_null_imputations(df, table_name)
+    try:
+        df = pd.read_sql_table(table_name + "_raw", con=engine)
 
-    if(table_name == "student_infos"):
-        df = apply_format_to_imd_band_field(df)
+        df = apply_null_imputations(df, table_name)
 
-    df = apply_all_encodings(df, table_name)
-    df = apply_features(df, table_name, **extra_data)    
+        if table_name == "student_infos":
+            df = apply_format_to_imd_band_field(df)
 
-    df.to_sql(table_name, con=engine, if_exists="append", index=False)
-    print(f"Tabla '{table_name}' procesada y guardada.")
+        df = apply_all_encodings(df, table_name)
+        df = apply_features(df, table_name, **extra_data)
+
+        df.to_sql(table_name, con=engine, if_exists="append", index=False)
+
+        console.print(f"[green]Tabla '[bold]{table_name}[/bold]' procesada y guardada.[/green]")
+        console.print(Panel.fit(f"✔️ Filas insertadas: {len(df)}", style="green"))
+
+    except Exception as e:
+        console.print(f"[red]Error al procesar {table_name}: {e}[/red]")
 
 def main():
     
