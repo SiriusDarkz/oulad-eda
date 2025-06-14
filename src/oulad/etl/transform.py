@@ -9,7 +9,7 @@ DATABASE_URL = "postgresql://oulad_user:oulad_pass@localhost:5432/oulad_db"
 engine = create_engine(DATABASE_URL)
 
 def process_table(table_name: str, engine, extra_data: dict = {}):
-    print(f"🔄 Procesando: {table_name}")
+    print(f"Procesando: {table_name}")
     df = pd.read_sql_table(table_name + "_raw", con=engine)
 
     df = apply_null_imputations(df, table_name)
@@ -21,7 +21,7 @@ def process_table(table_name: str, engine, extra_data: dict = {}):
     df = apply_features(df, table_name, **extra_data)    
 
     df.to_sql(table_name, con=engine, if_exists="append", index=False)
-    print(f"✅ Tabla '{table_name}' procesada y guardada.")
+    print(f"Tabla '{table_name}' procesada y guardada.")
 
 def main():
     
