@@ -64,10 +64,10 @@ Una vez descargados y ubicados correctamente, podrás ejecutar los notebooks sin
 - **Matplotlib** – Visualizaciones básicas
 - **Seaborn** – Visualizaciones estadísticas avanzadas
 - **Plotly (opcional)** – Visualizaciones interactivas
-- **Rich
-- **Postgres
-- **Poetry
-- **Conda
+- **Rich**
+- **Postgres**
+- **Poetry**
+- **Conda**
 
 ---
 
