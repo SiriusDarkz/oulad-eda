@@ -23,7 +23,7 @@ class OULADPipeline:
 
     def mostrar_menu(self):
         console.clear()
-        console.print(Panel.fit("[bold cyan]📊 OULAD PIPELINE[/bold cyan]", border_style="bright_blue"))
+        console.print(Panel.fit("[bold cyan]OULAD PIPELINE[/bold cyan]", border_style="bright_blue"))
 
         tabla = Table(show_header=True, header_style="bold magenta")
         tabla.add_column("Opción", justify="center", style="bold yellow")
