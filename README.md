@@ -4,7 +4,7 @@ Este proyecto realiza un **Análisis Exploratorio de Datos (EDA)** sobre el data
 
 ---
 
-## 📊 Objetivo
+## Objetivo
 
 Analizar y visualizar los datos educativos para:
 
@@ -14,7 +14,7 @@ Analizar y visualizar los datos educativos para:
 
 ---
 
-## 🗃️ Dataset
+## 🗃Dataset
 
 **OULAD** es un dataset real publicado por The Open University, que contiene información sobre más de 30,000 estudiantes, incluyendo:
 
@@ -27,6 +27,34 @@ Analizar y visualizar los datos educativos para:
 
 ---
 
+## Descarga del dataset
+
+** Importante:**  
+Por limitaciones de espacio y políticas de GitHub, **los archivos CSV del dataset no están incluidos directamente en este repositorio**.
+
+Para ejecutar correctamente los notebooks, deberás descargar los datos manualmente:
+
+1. Accede a la página oficial del dataset:  
+    [https://analyse.kmi.open.ac.uk/open_dataset](https://analyse.kmi.open.ac.uk/open_dataset)
+
+2. Descarga el archivo ZIP completo:  
+   `oulad.zip`
+
+3. Extrae el contenido y coloca los archivos `.csv` dentro de la carpeta `data/` del repositorio, siguiendo esta estructura:
+
+   ```bash
+   oulad-eda/
+   └── data/
+       ├── assessments.csv
+       ├── courses.csv
+       ├── studentAssessment.csv
+       ├── studentInfo.csv
+       ├── studentRegistration.csv
+       ├── studentVle.csv
+       ├── vle.csv
+       └── ...
+
+Una vez descargados y ubicados correctamente, podrás ejecutar los notebooks sin problemas.
 ## 🛠 Tecnologías utilizadas
 
 - **Python 3.8+**
@@ -54,4 +82,4 @@ oulad-eda/
 │   └── utils.py
 ├── outputs/            # Gráficos generados y tablas resumen
 ├── README.md           # Este archivo
-└── requirements.txt    # Paquetes necesarios
+└── pyproject.toml    # Paquetes necesarios
