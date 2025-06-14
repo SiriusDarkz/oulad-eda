@@ -57,29 +57,17 @@ Para ejecutar correctamente los notebooks, deberás descargar los datos manualme
 Una vez descargados y ubicados correctamente, podrás ejecutar los notebooks sin problemas.
 ## 🛠 Tecnologías utilizadas
 
-- **Python 3.8+**
+- **Python 3.11+**
 - **Jupyter Notebook** – Para el análisis interactivo
 - **Pandas** – Manejo y análisis de datos tabulares
 - **NumPy** – Operaciones numéricas
 - **Matplotlib** – Visualizaciones básicas
 - **Seaborn** – Visualizaciones estadísticas avanzadas
 - **Plotly (opcional)** – Visualizaciones interactivas
-- **Peewee (en utils)** – Exploración con ORM en versiones extendidas
+- **Rich
+- **Postgres
+- **Poetry
+- **Conda
 
 ---
 
-## 📁 Estructura del proyecto
-
-```bash
-oulad-eda/
-│
-├── data/               # Archivos CSV originales del dataset
-├── notebooks/          # Notebooks del análisis exploratorio
-│   ├── assess_eda.ipynb
-│   ├── vle_eda.ipynb
-│   └── full_domain_eda.ipynb
-├── utils/              # Funciones auxiliares y reutilizables
-│   └── utils.py
-├── outputs/            # Gráficos generados y tablas resumen
-├── README.md           # Este archivo
-└── pyproject.toml    # Paquetes necesarios
